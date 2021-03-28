@@ -17,6 +17,9 @@ pipeline {
             mail(subject: "notification: BUILD SUCCESSFUL", body: " build exécutée en succes",to: "ha_elfraihi@esi.dz, hs_boushaba@esi.dz" )
           }
         }
+      steps{
+        poweshell 'send email'
+      }
         
       }
 
