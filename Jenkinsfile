@@ -38,5 +38,11 @@ pipeline {
       }
     }
 
+    stage('Slack Notification') {
+      steps {
+        slackSend(channel: 'tp8_outils', token: 'T01NG34K5DE/B01SFE73YHL/9Sk7kGzSUUzud17mbW17t857', baseUrl: 'https://hooks.slack.com/services/')
+      }
+    }
+
   }
 }
