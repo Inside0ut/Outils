@@ -40,7 +40,7 @@ pipeline {
 
     stage('Slack Notification') {
       steps {
-        slackSend(channel: '#tp8_outils', token: 'T01NG34K5DE/B01SFE73YHL/9Sk7kGzSUUzud17mbW17t857', baseUrl: 'https://hooks.slack.com/services/', message: 'Un nouveau push a été effectuée ', teamDomain: 'esi', color: 'good', attachments: '[     text: \'something to say\',        color: \'#ff0000\'   ]', blocks: '[     text: \'something to say\',        color: \'#ff0000\'   ]')
+        slackSend(channel: '#tp8_outils', token: 'T01NG34K5DE/B01SFE73YHL/9Sk7kGzSUUzud17mbW17t857', baseUrl: 'https://hooks.slack.com/services/', message: 'Un nouveau push a été effectuée ', teamDomain: 'esi', color: 'good', attachments: '[ text: \'something to say\']', blocks: '[ text: \'something to say\']')
       }
     }
 
