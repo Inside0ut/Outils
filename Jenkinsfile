@@ -15,5 +15,22 @@ pipeline {
       }
     }
 
+    stage('Code Analysis') {
+      parallel {
+        stage('Code Analysis') {
+          steps {
+            bat 'C:\\Gradle\\gradle-5.6\\bin\\gradle sonarqube'
+          }
+        }
+
+        stage('Test reporting') {
+          steps {
+            cucumber '/*/*.json'
+          }
+        }
+
+      }
+    }
+
   }
 }
