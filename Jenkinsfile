@@ -12,7 +12,7 @@ pipeline {
           steps{
            mail (to: 'ha_elfraihi@esi.dz', 
                  subject: "Pipeline: ${currentBuild.fullDisplayName}", 
-                 body: "Something is wrong with ${env.BUILD_URL} has result ${currentBuild.result}")
+                 body: "Something is wrong with ${env.BUILD_URL} has result ${currentBuild.result}") 
           }
         
       }
