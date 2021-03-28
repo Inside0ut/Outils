@@ -9,16 +9,8 @@ pipeline {
           }
         }
         stage('Mail Notification'){
-            post {
-              failure{
-                mail(subject: "notification: BUILD FAILURE", body: " le Build a echoué",to: "ha_elfraihi@esi.dz" )
-              }
-              success{
-                mail(subject: "notification: BUILD SUCCESSFUL", body: " build exécutée en succes",to: "ha_elfraihi@esi.dz")
-              }
-            }
           steps{
-            poweshell 'send email'
+           mail (to: 'ha_elfraihi@esi.dz', subject: "Pipeline: ${currentBuild.fullDisplayName}", body: "Something is wrong with ${env.BUILD_URL}" has result ${currentBuild.result})
           }
         
       }
