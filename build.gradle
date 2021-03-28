@@ -1,12 +1,15 @@
 plugins {
     id 'java'
+    id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.22"
     id 'jacoco'
     id "org.sonarqube" version "3.1.1"
+    id "net.madeng.slack" version "0.0.23"
+
     id 'maven-publish'
 }
 
 group 'org.example'
-version '1.0-SNAPxHOT'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -20,10 +23,17 @@ repositories {
 }
 
 dependencies {
-    implementation 'junit:junit:4.12'
+    testImplementation 'io.cucumber:cucumber-java:6.0.0'
+    testImplementation 'io.cucumber:cucumber-junit:6.0.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
+cucumberReports {
+    outputDir = file('build/reports/cucumber')
+    buildId = '0'
+    reports = files('reports/example-report.json')
+
+}
 
 task generateMatrixAPI (type:Copy) {
     from 'build/reports', 'build/docs','build/libs'
@@ -53,6 +63,12 @@ publications {
         }
     }
 }
+slack {
+    webhookUrl 'https://hooks.slack.com/services/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'
+    message {
+        text = "Project is built newly and deployed into "
 
+    }
+}
 
 test.finalizedBy "sonarqube"
