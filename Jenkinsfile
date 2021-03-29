@@ -11,7 +11,7 @@ pipeline {
 
     stage('Mail Notification') {
       steps {
-        mail(to: 'hs_boushaba@esi.dz', subject: "Pipeline: ${currentBuild.fullDisplayName}", body: "Something is wrong with ${env.BUILD_URL} has result ${currentBuild.result}")
+        mail(to: 'ha_elfraihi@esi.dz', subject: "Pipeline: ${currentBuild.fullDisplayName}", body: "Something is wrong with ${env.BUILD_URL} has result ${currentBuild.result}")
       }
     }
 
@@ -40,7 +40,7 @@ pipeline {
 
     stage('Slack Notification') {
       steps {
-        slackSend(channel: '#tp8_outils', token: 'T01NG34K5DE/B01SFE73YHL/9Sk7kGzSUUzud17mbW17t857', baseUrl: 'https://hooks.slack.com/services/', message: 'Un nouveau push a été effectuée ', teamDomain: 'esi', color: 'good')
+        slackSend(channel: '#tp8_outils', token: 'T01NG34K5DE/B01SFE73YHL/9Sk7kGzSUUzud17mbW17t857', baseUrl: 'https://hooks.slack.com/services/', message: 'A new push has been executed !', teamDomain: 'esi', color: 'good')
       }
     }
 
