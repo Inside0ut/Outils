@@ -20,6 +20,10 @@ pipeline {
         stage('Code Analysis') {
           steps {
             bat 'C:\\Gradle\\gradle-5.6\\bin\\gradle sonarqube'
+            script {
+          def qg=waitForQualityGate()
+          if (qg.status != 'OK') {error "Pipline aboreted due to quality gate failure : &{qg.status}"}
+        }
           }
         }
 
