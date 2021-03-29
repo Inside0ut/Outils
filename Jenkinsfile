@@ -20,7 +20,6 @@ pipeline {
         stage('Code Analysis') {
           steps {
             bat 'C:\\Gradle\\gradle-5.6\\bin\\gradle sonarqube'
-            waitForQualityGate true
           }
         }
 
